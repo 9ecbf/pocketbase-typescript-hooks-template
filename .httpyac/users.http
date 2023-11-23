@@ -1,0 +1,38 @@
+{{+request
+    request.headers['Content-Type'] = 'application/json';
+}}
+
+### register
+# @name register
+POST /users/register
+{
+    "email": "hello@tuanm.dev",
+    "password": "12345678",
+    "passwordConfirm": "12345678",
+    "fullName": "Tuan",
+    "phoneNumber": "0969696969",
+    "subscription": "PREMIUM"
+}
+
+### request email verification
+# @name requestVerifyEmail
+POST /users/request-verify-email
+{
+    "email": "hello@tuanm.dev"
+}
+
+### verify email
+# @name verifyEmail
+POST /users/verify-email
+{
+    "email": "hello@tuanm.dev",
+    "code": "548237"
+}
+
+### authenticate
+# @name authenticate
+POST /users/authenticate
+{
+    "email": "hello@tuanm.dev",
+    "password": "12345678"
+}

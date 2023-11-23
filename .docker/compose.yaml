@@ -1,0 +1,22 @@
+services:
+  pocketbase:
+    build: ..
+    image: pocketbase-typescript-hooks:0.19.4
+    container_name: pocketbase-typescript-hooks
+    ports:
+      - 8090:8090
+    volumes:
+      - pb_data:/pb
+    networks:
+      - pocketbase-typescript-hooks
+
+volumes:
+  pb_data:
+    name: pocketbase-typescript-hooks
+    driver: local
+
+networks:
+  pocketbase-typescript-hooks:
+    name: pocketbase-typescript-hooks
+    driver: bridge
+

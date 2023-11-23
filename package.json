@@ -1,0 +1,32 @@
+{
+  "license": "MIT",
+  "version": "0.19.4",
+  "scripts": {
+    "help": "bun run scripts/help",
+    "add:migration": "bun run scripts/add migration",
+    "add:hook": "bun run scripts/add hook",
+    "docker:up": "bun run scripts/docker up",
+    "docker:down": "bun run scripts/docker down",
+    "format:migrations": "prettier --write \"migrations/**/*.ts\"",
+    "format:hooks": "prettier --write \"src/**/*.ts\"",
+    "format:views": "prettier --write \"views/**/*.html\"",
+    "format:public": "prettier --write \"public/**\"",
+    "format": "bun run format:migrations && bun run format:hooks && bun run format:views && bun format:public",
+    "clean:migrations": "rm -rf pb_data/pb_migrations",
+    "clean:hooks": "rm -rf pb_data/pb_hooks",
+    "clean:public": "rm -rf pb_public",
+    "clean": "bun run clean:migrations && bun run clean:hooks && bun run clean:public",
+    "prebuild": "bun run clean",
+    "build:migrations": "bun build --format esm migrations/* --outdir pb_data/pb_migrations",
+    "build:hooks": "bun build --format esm src/* --outdir pb_data/pb_hooks",
+    "build": "bun run build:migrations && bun run build:hooks",
+    "postbuild": "cp -r public pb_public && cp -r views pb_data/pb_hooks/views",
+    "start": "pocketbase serve --dir=pb_data --hooksDir=pb_data/pb_hooks --migrationsDir=pb_data/pb_migrations",
+    "dev": "bun run build && bun run start",
+    "reset": "rm -rf pb_data && rm -rf pb_public"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "prettier": "^3.1.0"
+  }
+}

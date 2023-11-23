@@ -1,0 +1,5 @@
+.git*
+.docker*
+.vscode/
+
+pb_data/

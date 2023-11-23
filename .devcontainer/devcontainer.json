@@ -1,0 +1,35 @@
+{
+    "build": {
+        "context": ".",
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "anweber.vscode-httpyac",
+                "eamodio.gitlens",
+                "esbenp.prettier-vscode",
+                "ms-azuretools.vscode-docker",
+                "oven.bun-vscode",
+                "shardulm94.trailing-spaces",
+                "VisualStudioExptTeam.vscodeintellicode"
+            ],
+            "settings": {
+                "[typescript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "editor.defaultFormatter": "esbenp.prettier-vscode"
+            }
+        }
+    },
+    "features": {
+        "docker-in-docker": {
+            "dockerDashComposeVersion": "v1",
+            "moby": true,
+            "version": "latest"
+        }
+    },
+    "runArgs": [
+        "--init"
+    ]
+}

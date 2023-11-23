@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    echo "Error: action missing."
+    exit 1
+elif [ "$1" = "up" ]; then
+    docker compose --project-directory .docker up -d --build
+elif [ "$1" = "down" ]; then
+    docker compose --project-directory .docker down
+else
+    echo "Error: action invalid."
+    exit 1
+fi

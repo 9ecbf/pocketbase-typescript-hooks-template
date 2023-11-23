@@ -1,0 +1,25 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "Error: action missing." && exit 1
+[ -z "$2" ] && echo "Error: name missing." && exit 1
+
+now() {
+    date "+%Y%m%d%H%M%S"
+}
+
+create() {
+    echo -n "/// <reference path=\"../types/pocketbase.d.ts\" />\n\n" > $1
+    echo "Success: '$1' added."
+}
+
+if [ "$1" = "hook" ]; then
+    hook="src/$2.pb.ts"
+    [ -f "$hook" ] && echo "Error: hook existed." && exit 1
+    create $hook
+elif [ "$1" = "migration" ]; then
+    migration="migrations/$(now)_$2.ts"
+    create $migration
+else
+    echo "Error: action invalid."
+    exit 1
+fi
